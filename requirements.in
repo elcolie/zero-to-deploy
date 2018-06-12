@@ -1,0 +1,9 @@
+Django
+django-cors-headers
+djangorestframework
+djangorestframework-jwt
+django-extensions
+ipython
+ipdb
+psycopg2-binary
+pytest-django
