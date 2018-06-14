@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_filters',
     'rest_framework',
+    'push_notifications',
     'menus',    # BooksConfig's name
     'commons',
     'orders',
     'order_items',
+    'invoices',
 ]
 
 MIDDLEWARE = [
@@ -150,4 +152,17 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+}
+# django-push-notifications
+PUSH_NOTIFICATIONS_SETTINGS = {
+    # Load and process all PUSH_NOTIFICATIONS_SETTINGS using the AppConfig manager.
+    "CONFIG": "push_notifications.conf.AppConfig",
+
+    # collection of all defined applications
+    "APPLICATIONS": {
+        "poink_fcm": {
+            "PLATFORM": "FCM",
+            "API_KEY": "...93E",
+        }
+    }
 }

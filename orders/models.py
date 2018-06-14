@@ -12,3 +12,8 @@ class Order(AbstractTimestamp):
 
     def __str__(self):
         return f"{self.customer}"
+
+    # Use with serializer this is the easiest way
+    @property
+    def sum(self):
+        return sum([item.menu.price for item in self.order_items.all()])

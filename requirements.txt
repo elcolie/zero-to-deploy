@@ -4,18 +4,31 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
+apns2==0.4.1              # via django-push-notifications
 appnope==0.1.0            # via ipython
+asn1crypto==0.24.0        # via cryptography
 atomicwrites==1.1.5       # via pytest
 attrs==18.1.0             # via pytest
 backcall==0.1.0           # via ipython
+certifi==2018.4.16        # via requests
+cffi==1.11.5              # via cryptography
+chardet==3.0.4            # via requests
+cryptography==2.2.2       # via apns2, http-ece, py-vapid, pywebpush
 decorator==4.3.0          # via ipython, traitlets
 django-choices==1.6.0
 django-cors-headers==2.2.0
 django-extensions==2.0.7
 django-filter==1.1.0
+django-push-notifications==1.6.0
 django==2.0.6
 djangorestframework-jwt==1.11.0
 djangorestframework==3.8.2
+h2==2.6.2                 # via hyper
+hpack==3.0.0              # via h2
+http-ece==1.0.5           # via pywebpush
+hyper==0.7.0              # via apns2
+hyperframe==3.2.0         # via h2, hyper
+idna==2.7                 # via cryptography, requests
 ipdb==0.11
 ipython-genutils==0.2.0   # via traitlets
 ipython==6.4.0
@@ -30,13 +43,18 @@ pluggy==0.6.0             # via pytest
 prompt-toolkit==1.0.15    # via ipython
 psycopg2-binary==2.7.4
 ptyprocess==0.5.2         # via pexpect
+py-vapid==1.4.0           # via pywebpush
 py==1.5.3                 # via pytest
+pycparser==2.18           # via cffi
 pygments==2.2.0           # via ipython
-pyjwt==1.6.4              # via djangorestframework-jwt
+pyjwt==1.6.4              # via apns2, djangorestframework-jwt
 pytest-django==3.2.1
 pytest==3.6.1             # via pytest-django
 pytz==2018.4              # via django
+pywebpush==1.7.0          # via django-push-notifications
+requests==2.19.0          # via pywebpush
 simplegeneric==0.8.1      # via ipython
-six==1.11.0               # via django-extensions, model-mommy, more-itertools, prompt-toolkit, pytest, traitlets
+six==1.11.0               # via cryptography, django-extensions, model-mommy, more-itertools, prompt-toolkit, pytest, traitlets
 traitlets==4.3.2          # via ipython
+urllib3==1.23             # via requests
 wcwidth==0.1.7            # via prompt-toolkit

@@ -5,6 +5,7 @@ django-filter
 djangorestframework
 djangorestframework-jwt
 django-extensions
+django-push-notifications
 Pillow
 ipython
 ipdb
