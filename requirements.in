@@ -1,9 +1,13 @@
 Django
 django-cors-headers
+django-choices
+django-filter
 djangorestframework
 djangorestframework-jwt
 django-extensions
+Pillow
 ipython
 ipdb
 psycopg2-binary
 pytest-django
+model_mommy

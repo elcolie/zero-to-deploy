@@ -8,3 +8,5 @@ An example workshop for PyCon Thailand 2018
 # Installations
 1. `pip install -r requirements.txt`
 
+# Testing
+1. `python manage.py test orders`
