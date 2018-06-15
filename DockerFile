@@ -1,0 +1,24 @@
+FROM python:3.6
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update && apt-get install -y gettext libgettextpo-dev wget
+
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
+# Creating working directory
+RUN mkdir /source
+WORKDIR /source
+
+RUN mkdir logs
+RUN mkdir static_files
+
+# Use caching
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copying source
+COPY . .
+

@@ -5,10 +5,13 @@ django-filter
 djangorestframework
 djangorestframework-jwt
 django-extensions
+django-environ
 django-push-notifications
+django-rq
 Pillow
 ipython
 ipdb
+gunicorn
 psycopg2-binary
 pytest-django
 model_mommy

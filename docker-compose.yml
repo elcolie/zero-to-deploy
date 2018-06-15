@@ -1,0 +1,77 @@
+# No worry about 8000 be able to shoot from the Internet. You can use firewall on your host-OS in order to prevent this
+version: '3.6'
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - './nginx/default.conf:/etc/nginx/conf.d/default.conf'
+      - 'static:/var/www/static'
+      - 'media:/var/www/media'
+    ports:
+      - "80:8000"
+    external_links:
+      - backend
+
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: DockerFile
+    command: ["sh", "run.sh"]
+    volumes:
+      - 'static:/source/static'
+      - 'media:/source/media'
+    expose:
+      - "8000"
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/zero_to_deploy
+      - DJANGO_SETTINGS_MODULE=config.settings
+      - REDIS=redis
+    external_links:
+      - postgres
+      - redis
+      - rqworker
+
+  rqworker:
+    container_name: rqworker
+    build:
+      context: .
+      dockerfile: DockerFile
+    command: ["python", "manage.py", "rqworker", "default"]
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/zero_to_deploy
+      - DJANGO_SETTINGS_MODULE==config.settings
+      - REDIS=redis
+    external_links:
+      - redis
+
+  redis:
+    image: redis
+    container_name: redis
+    expose:
+      - "6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - redis_data:/data
+    restart: always
+
+  postgres:
+    image: postgres:10
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: zero_to_deploy
+    restart: "always"
+    volumes:
+      - 'pgdata:/var/lib/postgresql/data'
+    expose:
+      - "5432"
+
+volumes:
+  pgdata:
+  media:
+  static:
+  redis_data:

@@ -1,0 +1,7 @@
+DockerFile
+.gitignore
+.db.sqlite3
+.pytest_cache
+static
+static_files
+logs

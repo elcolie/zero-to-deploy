@@ -13,16 +13,20 @@ backcall==0.1.0           # via ipython
 certifi==2018.4.16        # via requests
 cffi==1.11.5              # via cryptography
 chardet==3.0.4            # via requests
+click==6.7                # via rq
 cryptography==2.2.2       # via apns2, http-ece, py-vapid, pywebpush
 decorator==4.3.0          # via ipython, traitlets
 django-choices==1.6.0
 django-cors-headers==2.2.0
+django-environ==0.4.4
 django-extensions==2.0.7
 django-filter==1.1.0
 django-push-notifications==1.6.0
+django-rq==1.1.0
 django==2.0.6
 djangorestframework-jwt==1.11.0
 djangorestframework==3.8.2
+gunicorn==19.8.1
 h2==2.6.2                 # via hyper
 hpack==3.0.0              # via h2
 http-ece==1.0.5           # via pywebpush
@@ -52,9 +56,11 @@ pytest-django==3.2.1
 pytest==3.6.1             # via pytest-django
 pytz==2018.4              # via django
 pywebpush==1.7.0          # via django-push-notifications
+redis==2.10.6             # via rq
 requests==2.19.0          # via pywebpush
+rq==0.11.0                # via django-rq
 simplegeneric==0.8.1      # via ipython
-six==1.11.0               # via cryptography, django-extensions, model-mommy, more-itertools, prompt-toolkit, pytest, traitlets
+six==1.11.0               # via cryptography, django-environ, django-extensions, model-mommy, more-itertools, prompt-toolkit, pytest, traitlets
 traitlets==4.3.2          # via ipython
 urllib3==1.23             # via requests
 wcwidth==0.1.7            # via prompt-toolkit

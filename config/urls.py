@@ -17,10 +17,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
-from zero_to_deploy import api_urls
+from commons.views import PushNotificationAPIView
+from config import api_urls
 
 urlpatterns = [
+    path('api-token-auth/', obtain_jwt_token),
+    path('api-token-refresh/', refresh_jwt_token),
+    path('api-token-verify/', verify_jwt_token),
     path('api/', include(api_urls, namespace='api')),
     path('admin/', admin.site.urls),
+    path('push-notification/', PushNotificationAPIView.as_view(), name='push_notification'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
