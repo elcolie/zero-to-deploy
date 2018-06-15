@@ -1,6 +1,9 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from model_mommy import mommy
+from rest_framework import status
+from rest_framework.reverse import reverse
+from rest_framework.test import APIClient
 
 from commons.tests import make_food, make_order
 from invoices.models import Invoice
@@ -25,3 +28,13 @@ class TestInvoice(AdminClientMixin, TestCase):
         invoice = Invoice.objects.first()
         user = User.objects.filter(invoices=invoice).first()
         assert self.admin == user
+
+    def test_staff(self):
+        customer = User.objects.create(username='Bach', email='bach@example.com', password='tewiojkl;dfa')
+        client = APIClient()
+        client.force_authenticate(user=customer)
+        url = reverse('api:invoice-list')
+        res = client.get(url)
+        msg = f"You do not have permission to perform this action."
+        assert status.HTTP_403_FORBIDDEN == res.status_code
+        assert msg == str(res.data.get('detail'))
