@@ -10,3 +10,6 @@ An example workshop for PyCon Thailand 2018
 
 # Testing
 1. `python manage.py test orders`
+
+# Run with docker
+1. `docker-compose up`

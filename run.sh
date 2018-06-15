@@ -10,4 +10,4 @@ echo "Elcolie> collectstatic"
 python manage.py collectstatic --noinput
 
 echo "Elcolie> gunicorn"
-gunicorn -c gunicorn.compose.py poinkbackend.config.wsgi:application
+gunicorn -c gunicorn.compose.py config.wsgi:application

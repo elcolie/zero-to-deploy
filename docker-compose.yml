@@ -41,7 +41,7 @@ services:
     command: ["python", "manage.py", "rqworker", "default"]
     environment:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/zero_to_deploy
-      - DJANGO_SETTINGS_MODULE==config.settings
+      - DJANGO_SETTINGS_MODULE=config.settings
       - REDIS=redis
     external_links:
       - redis
