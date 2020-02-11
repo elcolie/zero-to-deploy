@@ -5,7 +5,6 @@
 #    pip-compile --output-file requirements.txt requirements.in
 #
 apns2==0.4.1              # via django-push-notifications
-appnope==0.1.0            # via ipython
 asn1crypto==0.24.0        # via cryptography
 atomicwrites==1.1.5       # via pytest
 attrs==18.1.0             # via pytest
@@ -23,7 +22,7 @@ django-extensions==2.0.7
 django-filter==1.1.0
 django-push-notifications==1.6.0
 django-rq==1.1.0
-django==2.0.6
+django==2.2.10
 djangorestframework-jwt==1.11.0
 djangorestframework==3.8.2
 gunicorn==19.8.1
@@ -61,6 +60,7 @@ requests==2.19.0          # via pywebpush
 rq==0.11.0                # via django-rq
 simplegeneric==0.8.1      # via ipython
 six==1.11.0               # via cryptography, django-environ, django-extensions, model-mommy, more-itertools, prompt-toolkit, pytest, traitlets
+sqlparse==0.3.0           # via django
 traitlets==4.3.2          # via ipython
 urllib3==1.23             # via requests
 wcwidth==0.1.7            # via prompt-toolkit
